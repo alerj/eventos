@@ -77,7 +77,13 @@ class CreateClient extends Command
     {
         $row = new Client();
         $row->name = $name;
-        $row->settings = json_encode(['signature' => null]);
+
+        $row->settings = [
+            'signature' => null,
+            'mail_from_name'=> null,
+            'mail_from_email'=> null,
+        ];
+
         $row->save();
     }
 

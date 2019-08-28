@@ -14,18 +14,17 @@ class Invitables extends Repository
 
     protected function attachInvitations($subEventId, $personInstitutions)
     {
+        $relatedSubEvents = SubEvents::findById(
+            $subEventId
+        )->event->subEvents->pluck('id');
+
         $personInstitutions['rows'] = collect($personInstitutions['rows'])
-            ->map(function ($personInstitution) use ($subEventId) {
+            ->map(function ($personInstitution) use ($relatedSubEvents) {
                 $personInstitution['invitations'] = Invitation::where(
                     'person_institution_id',
                     $personInstitution->id
                 )
-                    ->whereIn(
-                        'sub_event_id',
-                        SubEvents::findById(
-                            $subEventId
-                        )->event->subEvents->pluck('id')
-                    )
+                    ->whereIn('sub_event_id', $relatedSubEvents)
                     ->get()
                     ->map(function ($invitation) {
                         $invitation->order = blank(
