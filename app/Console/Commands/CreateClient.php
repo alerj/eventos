@@ -46,11 +46,11 @@ class CreateClient extends Command
     {
         $name = $this->argument('name');
 
-        set_current_client_id(1);
-
         dump('Creating client');
-        $this->createClient($name);
+        $newClient = $this->createClient($name);
         dump('Client created');
+
+        set_current_client_id($newClient->id);
 
         dump('Creating parties');
         $this->createParties();
@@ -85,6 +85,8 @@ class CreateClient extends Command
         ];
 
         $row->save();
+
+        return $row;
     }
 
     private function createContactTypes()

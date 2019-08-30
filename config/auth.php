@@ -17,7 +17,7 @@ return [
         'passwords' => 'users',
     ],
 
-    'timeout' => env('AUTH_TIMEOUT'),
+    'timeout' => env('AUTH_TIMEOUT', 2),
 
     /*
     |--------------------------------------------------------------------------
