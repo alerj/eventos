@@ -45,8 +45,8 @@ class CreatFuncaoTest extends DuskTestCase
                     ->click('@record-role-button')
                     ->pause('5000')
                     ->assertSee($role['name'])
-                    ->waitForText('Funções')
-                    ->screenshot('teste de Criar funcao');
+                    ->waitForText('Funções');
+//                    ->screenshot('teste de Criar funcao');
             });
         });
     }

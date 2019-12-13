@@ -95,7 +95,7 @@ class SubEvents extends Repository
     {
         $subEvent = parent::storeFromArray($array);
 
-        if (isset($array['address']['zipcode'])) {
+        if (isset($array['address'])) {
             $this->createAddress($subEvent, $array['address']);
         }
 

@@ -46,8 +46,8 @@ class CreatEventTest extends DuskTestCase
                     ->waitForText('Eventos (1)')
                     ->waitForText($event['name'])
                     //                    ->pause('4000')
-                    ->assertSee($event['name'])
-                    ->screenshot('teste de Criar evento');
+                    ->assertSee($event['name']);
+//                    ->screenshot('teste de Criar evento');
             });
         });
     }

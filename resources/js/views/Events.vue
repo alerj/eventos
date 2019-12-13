@@ -767,7 +767,7 @@
                                     "
                                     title="Enviar convite"
                                 >
-                                    <i class="fa fa-mail-bulk"></i>
+                                    <i dusk="enviar-convite" class="fa fa-mail-bulk"></i>
                                 </button>
 
                                 <button
@@ -785,7 +785,7 @@
                                     "
                                     title="Enviar credenciais"
                                 >
-                                    <i class="fa fa-landmark"></i>
+                                    <i dusk="send-credentials" class="fa fa-landmark"></i>
                                 </button>
 
                                 <button
@@ -835,7 +835,7 @@
                                     "
                                     title="Aceitar o convite manualmente"
                                 >
-                                    <i class="fa fa-check-double"></i>
+                                    <i dusk="accept-invitation" class="fa fa-check-double"></i>
                                 </button>
 
                                 <button
@@ -986,7 +986,7 @@ export default {
 
         markAsReceived(invitation, type) {
             confirm(
-                'Deseja realment marcar como recebido o covite de ' +
+                'Deseja realmente marcar como recebido o covite de ' +
                     invitation.person_institution.person.name +
                     '?',
                 this,

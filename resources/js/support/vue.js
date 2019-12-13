@@ -26,12 +26,12 @@ Vue.use(() => import('vue-swal'))
 /**
  * Vue Bootstrap
  */
-import { Modal } from 'bootstrap-vue/es/components'
-import { Button } from 'bootstrap-vue/es/components'
-import { Alert } from 'bootstrap-vue/es/components'
-Vue.use(Alert)
-Vue.use(Modal)
-Vue.use(Button)
+import { ModalPlugin } from 'bootstrap-vue'
+import { ButtonPlugin } from 'bootstrap-vue'
+import { AlertPlugin } from 'bootstrap-vue'
+Vue.use(AlertPlugin)
+Vue.use(ModalPlugin)
+Vue.use(ButtonPlugin)
 
 /**
  * Autoload Vue components

@@ -30,8 +30,8 @@ class LoginTest extends DuskTestCase
                 ->type('email', '4321')
                 ->type('password', '4321')
                 ->click('@login-button')
-                ->assertPathIs('/login')
-                ->screenshot('teste de login falho');
+                ->assertPathIs('/login');
+//                ->screenshot('teste de login falho');
         });
     }
     public function testLogin()
@@ -46,8 +46,8 @@ class LoginTest extends DuskTestCase
                         )
                     )
                     ->visit('/admin#')
-                    ->assertSee('Painel de Controle')
-                    ->screenshot('teste de Login');
+                    ->assertSee('Painel de Controle');
+//                    ->screenshot('teste de Login');
             });
         });
     }

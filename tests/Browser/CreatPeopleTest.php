@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\Data\Models\ContactType;
 use DatabaseSeeder;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Models\Person as PersonModel;
@@ -22,7 +23,7 @@ class CreatPeopleTest extends DuskTestCase
     public function testCriarPessoa()
     {
         $this->browse(function (Browser $browser) {
-            $browser->screenshot('teste tela branca');
+//            $browser->screenshot('teste tela branca');
             $user = app(UsersRepository::class)->randomElement()->username;
             $person = factory(PersonModel::class)->raw();
             $this->browse(function (Browser $browser) use ($user, $person) {
@@ -50,9 +51,9 @@ class CreatPeopleTest extends DuskTestCase
                     //                    ->click('@people-option')
                     //                    ->pause('8000')
                     //                    ->assertSee('zé')
-                    ->assertSee($person['name'])
+                    ->assertSee($person['name']);
 
-                    ->screenshot('teste de pessoa');
+//                    ->screenshot('teste de pessoa');
             });
             //            $this ->assertDatabaseHas('')
         });
@@ -91,8 +92,8 @@ class CreatPeopleTest extends DuskTestCase
                     ->click('@active-check')
                     ->type('@title-name', 'Titulo')
                     ->click('@record-people-function')
-                    ->pause('6000')
-                    ->screenshot('teste de função pessoa');
+                    ->pause('6000');
+//                    ->screenshot('teste de função pessoa');
             });
         });
     }
@@ -122,9 +123,9 @@ class CreatPeopleTest extends DuskTestCase
                     ->click('@select-category')
                     ->click('@associate-category')
                     ->waitForText('Tratamento')
-                    ->pause('7000')
+                    ->pause('7000');
                     //                    ->waitForText('nova categoria')
-                    ->screenshot('teste de categoria pessoa');
+//                    ->screenshot('teste de categoria pessoa');
             });
         });
     }
@@ -132,13 +133,18 @@ class CreatPeopleTest extends DuskTestCase
     public function testAddContact()
     {
         $this->browse(function (Browser $browser) {
-            $user = app(UsersRepository::class)->randomElement()->username;
-            $this->browse(function (Browser $browser) use ($user) {
+            $username = app(UsersRepository::class)->randomElement()->username;
+            $user = app(UsersRepository::class)->findUserByEmail(
+                $username . '@alerj.rj.gov.br'
+            );
+
+            \Auth::login($user);
+            $emailId = ContactType::where('client_id', get_current_client_id())->where('name', 'E-mail')->first()->id;
+
+            $this->browse(function (Browser $browser) use ($user, $emailId) {
                 $browser
                     ->loginAs(
-                        app(UsersRepository::class)->findUserByEmail(
-                            $user . '@alerj.rj.gov.br'
-                        )
+                        $user
                     )
                     ->visit('/admin#')
                     ->waitForText('Painel')
@@ -154,18 +160,18 @@ class CreatPeopleTest extends DuskTestCase
                     ->waitForText('Criar Contato')
                     //                    ->click('Criar Contato');
                     ->script([
-                        "document.getElementById('contact_type_id').parentElement.__vue__.select(3)"
+                        "document.getElementById('contact_type_id').parentElement.__vue__.select({$emailId})"
                     ]);
                 $browser
-                    ->screenshot('teste email')
+//                    ->screenshot('teste email')
                     //                    ->click('@contact-email')
                     ->type('@contact-email', 'contato@abc.net')
                     ->click('@contact-active')
                     ->click('@record-contact-button')
                     ->waitForText('contato@abc.net')
-                    ->pause('3000')
+                    ->pause('3000');
                     //                    ->assertSee('contato@abc.net')
-                    ->screenshot('teste contato da pessoa');
+//                    ->screenshot('teste contato da pessoa');
             });
         });
     }

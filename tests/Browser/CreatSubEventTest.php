@@ -45,6 +45,8 @@ class CreatSubEventTest extends DuskTestCase
                     ->type('@sub-name', 'sub teste')
                     ->keys('#date', '210219')
                     ->keys('#time', '00002315')
+                    ->check('@send_invitations')
+                    ->check('@send_credentials')
                     ->type('@sub-adress', 'local qualquer')
                     ->script([
                         "document.getElementById('sector_id').parentElement.__vue__.select(3)"
@@ -53,10 +55,10 @@ class CreatSubEventTest extends DuskTestCase
                     ->click('@sub-record')
                     ->waitForText('Confirmado')
                     ->click('@click-event')
-                    ->waitForText('sub teste')
+                    ->waitForText('sub teste');
                     //                    ->pause('7000')
                     //                    ->click(Confirmar Sub-evento)
-                    ->screenshot('teste criar sub evento');
+//                    ->screenshot('teste criar sub evento');
             });
         });
     }
@@ -91,8 +93,8 @@ class CreatSubEventTest extends DuskTestCase
                     ->click('@invite-button')
                     ->click('@event-option')
                     //                    ->waitForText('Herlandson')
-                    ->pause('5000')
-                    ->screenshot('teste convidar sub evento');
+                    ->pause('5000');
+//                    ->screenshot('teste convidar sub evento');
             });
         });
     }
@@ -119,8 +121,8 @@ class CreatSubEventTest extends DuskTestCase
                     ->waitForText('sub teste')
                     ->click('@confirm-subevent')
                     ->press('sim')
-                    ->pause('5000')
-                    ->screenshot('teste confirmar sub evento');
+                    ->pause('5000');
+//                    ->screenshot('teste confirmar sub evento');
             });
         });
     }

@@ -46,9 +46,9 @@ class CreatNewCategoryTest extends DuskTestCase
                     //                        $category['name'])
                     ->click('@record-category-button')
                     ->waitForText('#')
-                    ->waitForText('nova categoria')
+                    ->waitForText('nova categoria');
                     //                    ->waitForText($category['name'])
-                    ->screenshot('teste de Criar Categoria');
+//                    ->screenshot('teste de Criar Categoria');
             });
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\CreateClient;
+use App\Console\Commands\UpdateMapsImages;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [CreateClient::class];
+    protected $commands = [CreateClient::class, UpdateMapsImages::class];
 
     /**
      * Define the application's command schedule.

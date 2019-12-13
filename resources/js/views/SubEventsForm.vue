@@ -21,6 +21,7 @@
                                 <div class="col-4 text-right">
                                     <app-input
                                         name="send_invitations"
+                                        dusk="send_invitations"
                                         label="pode enviar convites"
                                         type="checkbox"
                                         v-model="
@@ -36,6 +37,7 @@
                                 <div class="col-4">
                                     <app-input
                                         name="send_credentials"
+                                        dusk="send_credentials"
                                         label="pode enviar credenciais"
                                         type="checkbox"
                                         v-model="
