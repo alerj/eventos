@@ -152,9 +152,10 @@ trait PeopleExport
 
     public function exportFilterPeople()
     {
-        return $this->disablePagination()->applyFilter(
+        set_time_limit(0);
+        return $this->disablePagination()->order(
             $this->exportQueryAndJoins()->select($this->exportGetSelectList())
-        )['rows'];
+        )->get();
     }
 
     public function getExportableData()
