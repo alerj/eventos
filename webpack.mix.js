@@ -1,5 +1,7 @@
 const mix = require('laravel-mix')
 
+const AssetsPlugin = require('assets-webpack-plugin')
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -24,9 +26,9 @@ mix.js('resources/js/app.js', 'public/js')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 
 mix.webpackConfig({
-    plugins: [new LiveReloadPlugin()],
+    plugins: [new LiveReloadPlugin(), new AssetsPlugin()],
 
     output: {
-        chunkFilename: 'js/chunks/chunk-[name].js',
+        chunkFilename: 'js/chunks/[chunkhash].js',
     },
 })
