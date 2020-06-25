@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password',
         'permissions',
         'profiles',
+        'last_login_at',
     ];
 
     protected $orderBy = ['name' => 'asc'];
