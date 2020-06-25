@@ -8,10 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Data\Repositories\Clients as ClientsRepository;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
+use OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class User extends Authenticatable
+class User extends Authenticatable  implements AuditableContract
 {
-    use Notifiable, Selectable;
+    use Notifiable, Selectable, AuditableTrait;
 
     protected static $allowedClients;
 

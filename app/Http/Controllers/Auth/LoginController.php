@@ -105,8 +105,7 @@ class LoginController extends Controller
 
     function authenticated(Request $request, $user)
     {
-        $user->update([
-            'last_login_at' => Carbon::now()
-        ]);
+        $user->last_login_at = Carbon::now();
+        $user->save();
     }
 }
